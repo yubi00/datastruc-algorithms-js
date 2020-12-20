@@ -137,6 +137,26 @@ class DoublyLinkedList {
     return removedNode;
   }
 
+  reverse() {
+    let node = this.head;
+
+    //swap head and tail
+    this.head = this.tail;
+    this.tail = node;
+
+    //keep track of the prev and next node
+    let prevNode = null,
+      nextNode;
+    while (nextNode !== null) {
+      nextNode = node.next;
+      node.next = prevNode;
+      node.prev = nextNode;
+      prevNode = node;
+      node = nextNode;
+    }
+    return this;
+  }
+
   print() {
     let arr = [];
     let current = this.head;
@@ -156,8 +176,10 @@ list.push(300);
 list.push(400);
 
 list.print();
-console.log(list.remove(2));
-console.log(list.get(2));
+list.reverse();
+list.print();
+console.log(list.tail);
+console.log(list.get(1));
 
 //BIG O
 //INSERTION O(1)
