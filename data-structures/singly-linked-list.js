@@ -116,12 +116,17 @@ class SinglyLinkedList {
 
   reverse() {
     let node = this.head;
+
+    //swap head and tail
     this.head = this.tail;
     this.tail = node;
-    let prev = null;
-    let next = null;
 
-    for (let i = 0; i < this.length; i++) {
+    //keep track of the prev and next node
+    let prev = null;
+    let next;
+
+    //loop through the list, until it reaches the tail of the list
+    while (next !== null) {
       next = node.next;
       node.next = prev;
       prev = node;
@@ -145,6 +150,8 @@ const list = new SinglyLinkedList();
 list.push("hello");
 list.push("world");
 list.push("again");
+list.push("buchu");
+list.push("yubi");
 
 list.print();
 list.reverse();
