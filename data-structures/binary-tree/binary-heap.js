@@ -82,3 +82,8 @@ heap.insert(55);
 
 heap.extractMax();
 console.log(heap.values);
+
+//BIG O OF BINARY HEAPS
+//INSERTION - O(LOGN)
+//REMOVAL - O(LOGN)
+//SEARCH - O(N)
