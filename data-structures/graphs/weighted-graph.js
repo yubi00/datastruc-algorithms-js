@@ -109,3 +109,19 @@ graph.addEdge("E", "F", 1);
 
 const res = graph.Dijkstra("A", "F");
 console.log(res);
+
+//Algorithm for Dijkstra Algorithm
+/* 
+let distance of start vertex from start vertex = 0 
+let distance of all other vertices from start = Infinity 
+
+Repeat 
+  visit the unvisited vertex with the smallest known distance from the start vertex 
+  for the current vertex, examine its unvisited neighbours
+  for the current vertex, calculate distance of each neighbour from start vertex 
+  if the calculated distance of a vertex is less than the known distance, update the shortest distance 
+  update the previous vertex for each of the updated distances 
+  add the current vertex to the list of visited vertices 
+Until all vertices visited
+
+*/
