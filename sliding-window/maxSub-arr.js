@@ -1,3 +1,4 @@
+//Find the max sum of the contiguous sub array numbers of window size  num
 //Time complexity of O(n2)
 function maxSubarrSum(arr, num) {
   //handling edge case
@@ -16,8 +17,8 @@ function maxSubarrSum(arr, num) {
   return max;
 }
 
-const res = maxSubarrSum([2, 6, 4, 2, 1, 3, 2, 6, 3], 3);
-console.log(res);
+// const res = maxSubarrSum([2, 6, 4, 2, 1, 3, 2, 6, 3], 3);
+// console.log(res);
 
 //much faster and better approach using sliding window pattern context.lineWidth
 // the Big O of O(n)
@@ -40,5 +41,5 @@ function slidingwinMax(arr, num) {
   }
   return max;
 }
-const result = slidingwinMax([2, 6, 4, 2, 1, 3, 2, 6, 3], 3);
+const result = slidingwinMax([2, 9, 3, 1, 4, 10], 3);
 console.log(result);

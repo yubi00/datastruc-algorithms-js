@@ -1,3 +1,4 @@
+//Find all the pairs of numbers that has the sum equals to 0
 //naive approach of big o of n2
 function sumZero(arr) {
   let result = [];
@@ -11,7 +12,7 @@ function sumZero(arr) {
   return result;
 }
 
-const res = sumZero([-5, -4, -1, 0, 1, 2, 3]);
+const res = sumZero([-5, -4, -1, 0, 1, 4, 2, 3]);
 console.log(res);
 
 //better algorith of big o of o(n)
@@ -36,5 +37,5 @@ function betterSumZero(arr) {
   return result;
 }
 
-const result = betterSumZero([-5, -4, -2, -1, 0, 10]);
+const result = betterSumZero([-5, 1, -4, -2, -1, 4, 0, 10]);
 console.log(result);

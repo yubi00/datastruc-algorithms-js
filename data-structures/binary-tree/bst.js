@@ -9,10 +9,13 @@ class Node {
 class BinarySearchTree {
   constructor() {
     this.root = null;
+    this.values = [];
   }
 
   insert(value) {
     let newNode = new Node(value);
+    this.values.push(newNode.value);
+
     if (!this.root) {
       this.root = newNode;
       return this;
@@ -69,7 +72,7 @@ class BinarySearchTree {
     }
     return data;
   }
-
+  //root-left-right
   DfsPreOrder() {
     let data = [];
 
@@ -81,7 +84,7 @@ class BinarySearchTree {
     traverse(this.root);
     return data;
   }
-
+  //left-right-root
   DfsPostOrder() {
     let data = [];
 
@@ -94,6 +97,29 @@ class BinarySearchTree {
     return data;
   }
 
+  // dfs recursive
+  DfsRecursive(node) {
+    if (node === null) return [];
+    const leftValues = this.DfsRecursive(node.left);
+    const rightValues = this.DfsRecursive(node.right);
+    return [node.value, ...leftValues, ...rightValues];
+  }
+
+  //dfs iterative using stack
+  DfsIterative(root) {
+    let result = [];
+    let stack = [root];
+
+    while (stack.length) {
+      const current = stack.pop();
+      result.push(current.value);
+      if (current.right) stack.push(current.right);
+      if (current.left) stack.push(current.left);
+    }
+    return result;
+  }
+
+  // left-root-right
   DfsInOrder() {
     let data = [];
 
@@ -117,8 +143,18 @@ bst.insert(25);
 bst.insert(50);
 bst.insert(22);
 
-const dfs = bst.DfsInOrder();
-console.log(dfs);
+//     20
+//     / \
+//   17    25
+//   / \   /  \
+// 15   18 22  50
+
+const dfsRecursive = bst.DfsRecursive(bst.root);
+console.log(dfsRecursive);
+// [20, 17, 15, 18, 25, 22, 50]; // DfsPreOrder
+
+const dfsItertive = bst.DfsIterative(bst.root);
+console.log(dfsItertive);
 
 //BIG O
 
