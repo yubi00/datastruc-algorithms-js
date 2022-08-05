@@ -72,6 +72,27 @@ class BinarySearchTree {
     }
     return data;
   }
+
+  sum(root) {
+    if (root === null) return 0;
+
+    const queue = [root];
+    let sum = 0;
+    while (queue.length) {
+      const current = queue.shift();
+      sum += current.value;
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+    return sum;
+  }
+
+  sumRecursive(root) {
+    if (root === null) return 0;
+    return (
+      root.value + this.sumRecursive(root.left) + this.sumRecursive(root.right)
+    );
+  }
   //root-left-right
   DfsPreOrder() {
     let data = [];
@@ -131,6 +152,37 @@ class BinarySearchTree {
     traverse(this.root);
     return data;
   }
+
+  min(root) {
+    if (root === null) return 0;
+    let current = root;
+
+    while (current.left) {
+      current = current.left;
+    }
+
+    return current.value;
+  }
+
+  minRecursive(root) {
+    if (root === null) return Infinity;
+    return Math.min(
+      root.value,
+      this.minRecursive(root.left),
+      this.minRecursive(root.right)
+    );
+  }
+
+  max(root) {
+    if (root === null) return 0;
+    let current = root;
+
+    while (current.right) {
+      current = current.right;
+    }
+
+    return current.value;
+  }
 }
 
 let bst = new BinarySearchTree();
@@ -155,6 +207,10 @@ console.log(dfsRecursive);
 
 const dfsItertive = bst.DfsIterative(bst.root);
 console.log(dfsItertive);
+
+console.log('sum: ', bst.sumRecursive(bst.root));
+console.log('min: ', bst.minRecursive(bst.root));
+console.log('max: ', bst.max(bst.root));
 
 //BIG O
 
